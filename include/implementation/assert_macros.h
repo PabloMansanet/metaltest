@@ -5,7 +5,7 @@
 #define METAL_ASSERT(value) { \
    int metal_value = (value); \
    if (metal_value == 0) {  \
-      metal_print_string("  *Assertion failure at "__FILE__":"); \
+      metal_print_string("  *Assertion failure at " __FILE__ ":"); \
       metal_print_long_long(__LINE__); \
       metal_print_string("\n  |---> "#value" evaluated as false\n  \\---> "); \
       metal_print_string(metal_current_test); \
@@ -19,7 +19,7 @@
 #define METAL_ASSERT_FALSE(value) { \
    int metal_value = (value); \
    if (metal_value != 0) {  \
-      metal_print_string("  *Assertion failure at "__FILE__":"); \
+      metal_print_string("  *Assertion failure at " __FILE__ ":"); \
       metal_print_long_long(__LINE__); \
       metal_print_string("\n  |---> "#value" evaluated as true\n  \\---> "); \
       metal_print_string(metal_current_test); \
@@ -37,7 +37,7 @@
    metal_punning_union metal_actual_value; \
    METAL_FILL_UNION(metal_actual_value, actual); \
    if (!metal_bitwise_compare(&metal_expected_value, &metal_actual_value)) { \
-      metal_print_string("  * Assertion failure at "__FILE__":"); \
+      metal_print_string("  * Assertion failure at " __FILE__ ":"); \
       metal_print_long_long(__LINE__); \
       metal_print_string("\n  |---> Expected: \""#expected"\", evaluated as: 0x"); \
       metal_print_hex(metal_expected_value.ll); \
@@ -63,7 +63,7 @@
       { \
          if (!metal_failure_reported) \
          { \
-            metal_print_string("  * Assertion failure at "__FILE__":"); \
+            metal_print_string("  * Assertion failure at " __FILE__ ":"); \
             metal_print_long_long(__LINE__); \
             metal_print_string("\n  |-----> Expected: "#expected"\""); \
             metal_print_string("\n  |-----> Actual: "#actual"\""); \
@@ -92,7 +92,7 @@ int metal_string_eq(const char* str1, const char* str2);
    const char* evaluated_expected = (expected); \
    const char* evaluated_actual = (actual); \
    if (!metal_string_eq(evaluated_expected, evaluated_actual)) { \
-      metal_print_string("  * Assertion failure at "__FILE__":"); \
+      metal_print_string("  * Assertion failure at " __FILE__ ":"); \
       metal_print_long_long(__LINE__); \
       metal_print_string("\n  |-----> Expected: "#expected", evaluated as: \""); \
       metal_print_string(evaluated_expected); \
